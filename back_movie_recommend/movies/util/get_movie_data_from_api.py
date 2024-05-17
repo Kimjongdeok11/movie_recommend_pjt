@@ -1,14 +1,21 @@
 import requests
 import pprint
-# for n in range(1, 501):
-url = f"https://api.themoviedb.org/3/movie/popular?language=ko-KR&page={1}"
-headers = {
-    "accept": "application/json",
-    "Authorization": 
-}
-response = requests.get(url, headers=headers).json()
 
-pprint.pprint(response['results'])
+movie_id = []
 
-def get_movies_from_api():
-    pass
+for n in range(1, 501):
+    url = f"https://api.themoviedb.org/3/movie/popular?language=ko-KR&page={n}"
+    headers = {
+        "accept": "application/json",
+        "Authorization": ""
+    }
+    response = requests.get(url, headers=headers).json()
+    for n in range(20):
+        movie_id.append(response['results'][n]['id'])
+
+print(movie_id)
+
+    # pprint.pprint(response['results'][0]['id'])
+
+
+
